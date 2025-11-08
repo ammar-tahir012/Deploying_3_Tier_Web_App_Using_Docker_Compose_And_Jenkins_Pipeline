@@ -5,7 +5,17 @@ services:
     image: mugheesulhassan/backend
     container_name: backend-jenkins
     ports:
-      - "5000:4000"  # changed to avoid conflict
+      - "5000:4000"  # Changed to avoid conflict
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}
+      - CLOUDINARY_SECRET_KEY=${CLOUDINARY_SECRET_KEY}
+      - CLOUDINARY_NAME=${CLOUDINARY_NAME}
+      - JWT_SECRET=${JWT_SECRET}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - CORS_ORIGIN=${CORS_ORIGIN}
+      - VITE_BACKEND_URL=${VITE_BACKEND_URL}
     volumes:
       - ./backend:/app
     working_dir: /app
@@ -46,4 +56,3 @@ services:
       - backend
       - user-frontend
       - admin-frontend
-
